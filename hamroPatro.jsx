@@ -16,7 +16,7 @@ export const className = `
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   border-radius: 10px;
-  width: 450px;
+  width: 400px;
 `;
 
 const today = new Date();
@@ -101,18 +101,18 @@ export const render = ({ output }) => {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <h1
+        {/* <h1
           style={{
             marginTop: 30,
             fontStyle: "italic",
             textDecoration: "underline",
           }}
         >
-          Mac Patro
-        </h1>
+          iPatro
+        </h1> */}
         <img
-          style={{ width: 260, height: 85, marginRight: 10 }}
-          src="./nefolStrip.png"
+          style={{ width: 420 }}
+          src="./mainMain.png"
         />
       </div>
       <h1 style={{ marginTop: 15 }}>
