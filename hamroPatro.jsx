@@ -1,4 +1,4 @@
-// Refresh frequency in milliseconds (every 1 hour)
+// Refresh frequency in milliseconds (every 10 seconds)
 export const refreshFrequency = 10000;
 import data from "./lyrics.json";
 
@@ -17,6 +17,7 @@ export const className = `
   color: white;
   border-radius: 10px;
   width: 400px;
+  height:300px;
 `;
 
 const today = new Date();
@@ -89,7 +90,6 @@ function yearParser(data) {
   return json.res.year;
 }
 
-let clicked = false;
 
 // Render the widget
 export const render = ({ output }) => {
@@ -115,7 +115,7 @@ export const render = ({ output }) => {
           src="./mainMain.png"
         />
       </div>
-      <h1 style={{ marginTop: 15 }}>
+      <h1 style={{ marginTop: 10 }}>
         {nepaliMonth + " " + todayDate + ", " + nepaliYear + ", " + nepaliToDay}{" "}
       </h1>
       <h2 style={{ fontStyle: "italic" }}>{fullEnglishDate}</h2>
