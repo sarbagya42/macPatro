@@ -1,4 +1,4 @@
-This is simple but elegant MacOS widget for Nepali Date.
+This is a simple but elegant MacOS widget for Nepali Date.
 How to use it?
 Step1: Download and install Übersicht, Step2: Add the hamropatro.jsx and nepal.png to the Übersicht Widget Folder, Step3: Update all Widgets.
 
