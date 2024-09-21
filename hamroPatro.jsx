@@ -1,10 +1,27 @@
 // Refresh frequency in milliseconds (every 10 seconds)
-export const refreshFrequency = 10000;
+import run from 'uebersicht'
+export const refreshFrequency = 5000000;
 import data from "./lyrics.json";
+const url='https://calendar.bloggernepal.com/api/today';
+
 
 const songs = data;
 // Command to fetch data from Hamro Patro's website
-export const command = "curl -s https://calendar.bloggernepal.com/api/today";
+// export const command = "curl -s https://calendar.bloggernepal.com/api/today";
+
+// export const command=`curl -s ${url}`
+
+// const commandRunner=()=>{
+//   if(!cachedData){
+//     return `curl -s ${url}`
+//   }
+//   else{
+//     return null;
+//   }
+// }
+
+export const command= `curl -s ${url}`
+
 
 // CSS styling for the widget
 export const className = `
@@ -71,6 +88,7 @@ let nepaliToDay = nepaliWeeksDays[dayIndex];
 
 //Data Parser
 function nepaliDate(data) {
+  console.log(data)
   const json = JSON.parse(data);
   const dayArray = json.res.days;
   const todayExistence = dayArray.find((day) => day.tag === "today");
@@ -93,24 +111,16 @@ function yearParser(data) {
 
 // Render the widget
 export const render = ({ output }) => {
+  if(output){
+  const parsedMainData=JSON.parse(output);
   const todayDate = nepaliDate(output);
   const nepaliMonth = monthParser(output);
   const nepaliYear = yearParser(output);
   const randomIndex = Math.floor(Math.random() * songs.length);
-
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {/* <h1
-          style={{
-            marginTop: 30,
-            fontStyle: "italic",
-            textDecoration: "underline",
-          }}
-        >
-          iPatro
-        </h1> */}
-        <img
+         <img
           style={{ width: 420 }}
           src="./mainMain.png"
         />
@@ -123,4 +133,24 @@ export const render = ({ output }) => {
       <p style={{ fontStyle: "italic" }}>- {songs[randomIndex].creator}</p>
     </div>
   );
+}
+else{
+  const randomIndex = Math.floor(Math.random() * songs.length);
+  return(
+<div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+         <img
+          style={{ width: 420 }}
+          src="./mainMain.png"
+        />
+      </div>
+      <h2 style={{ marginTop: 10 }}>
+        404: Date Unavailable
+      </h2>
+      <p style={{ fontStyle: "italic" }}>{songs[randomIndex].lyrics}</p>
+      <p style={{ fontStyle: "italic" }}>- {songs[randomIndex].creator}</p>
+    </div>
+
+  )
+}
 };
