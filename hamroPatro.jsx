@@ -43,7 +43,7 @@ const dayIndex = today.getDay();
 const nepaliWeeksDays = [
   "आइतवार",
   "सोमवार",
-  "मगलवार",
+  "मंगलबार", 
   "बुधवार",
   "बिहिवार",
   "शुक्रवार",
